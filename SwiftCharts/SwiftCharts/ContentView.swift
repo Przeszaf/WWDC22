@@ -10,7 +10,8 @@ struct RandomData: Identifiable {
 }
 
 struct ContentView: View {
-    let data = getRandomData(count: 200)
+    let data = getRandomData(count: 200, offsetY: 0)
+    let data2 = getRandomData(count: 200, offsetY: 30)
     @State private var beforeDragPosition = 0
     @State private var position = 0
 
@@ -22,6 +23,12 @@ struct ContentView: View {
                         x: .value("Date", data[i].x),
                         y: .value("Y", data[i].y)
                     )
+                    .foregroundStyle(by: .value("Test", "AAAA"))
+                    LineMark(
+                        x: .value("Date", data2[i].x),
+                        y: .value("Y", data2[i].y)
+                    )
+                    .foregroundStyle(by: .value("Test", "BBBB"))
                 }
             }
             .padding()
@@ -54,15 +61,16 @@ struct ContentView: View {
                 AxisMarks(values: .automatic(roundUpperBound: false))
             })
             .chartXScale(type: .date)
-            .chartYScale(domain: data.min(by: { $0.y < $1.y })!.y ... data.max(by: { $0.y < $1.y })!.y)
+            .chartYScale(domain: (data + data2).min(by: { $0.y < $1.y })!.y ... (data + data2).max(by: { $0.y < $1.y })!.y)
         }
     }
 }
 
-private func getRandomData(count: Int) -> [RandomData] {
+private func getRandomData(count: Int, offsetY: Int) -> [RandomData] {
     var randomData = [RandomData]()
     for i in 0 ..< count {
-        randomData.append(.init(x: .now.addingTimeInterval(86400.0 * Double(i)), y: Int.random(in: 0 ... 10) + i))
+        randomData.append(.init(x: .now.addingTimeInterval(86400.0 * Double(i)),
+                                y: Int.random(in: 0 ... 10) + i + offsetY))
     }
     return randomData
 }
