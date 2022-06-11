@@ -5,7 +5,7 @@ import SwiftUI
 
 struct RandomData: Identifiable {
     let id = UUID()
-    let x: Int
+    let x: Date
     let y: Int
 }
 
@@ -17,13 +17,14 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Chart {
-                ForEach(position...position+50, id: \.self) { i in
+                ForEach(position ..< position + 50, id: \.self) { i in
                     LineMark(
-                        x: .value("X", data[i].x),
+                        x: .value("Date", data[i].x),
                         y: .value("Y", data[i].y)
                     )
                 }
             }
+            .padding()
             .chartOverlay(content: { proxy in
                 GeometryReader { g in
                     Rectangle().fill(.clear).contentShape(Rectangle())
@@ -32,12 +33,12 @@ struct ContentView: View {
                                 .onChanged { value in
                                     let startX = value.startLocation.x - g[proxy.plotAreaFrame].origin.x
                                     let currentX = value.location.x - g[proxy.plotAreaFrame].origin.x
-                                    if let startValue: Int = proxy.value(atX: startX),
-                                       let currentValue: Int = proxy.value(atX: currentX) {
-//                                        withAnimation {
-                                            position = max(0, beforeDragPosition - currentValue + startValue)
-//                                        }
-                                        print(position)
+                                    if let startValue: Date = proxy.value(atX: startX),
+                                       let currentValue: Date = proxy.value(atX: currentX) {
+                                        let newPosition = beforeDragPosition -
+                                            Int(currentValue.timeIntervalSince1970) /
+                                            86400 + Int(startValue.timeIntervalSince1970) / 86400
+                                        position = min(data.count - 50, max(0, newPosition))
                                     }
                                 }
                                 .onEnded { _ in
@@ -46,7 +47,14 @@ struct ContentView: View {
                         )
                 }
             })
-            .chartXScale(domain: 0 ... 50, type: .linear)
+            .chartXAxis(content: {
+                AxisMarks(values: .automatic(desiredCount: 6))
+            })
+            .chartYAxis(content: {
+                AxisMarks(values: .automatic(roundUpperBound: false))
+            })
+            .chartXScale(type: .date)
+            .chartYScale(domain: data.min(by: { $0.y < $1.y })!.y ... data.max(by: { $0.y < $1.y })!.y)
         }
     }
 }
@@ -54,7 +62,7 @@ struct ContentView: View {
 private func getRandomData(count: Int) -> [RandomData] {
     var randomData = [RandomData]()
     for i in 0 ..< count {
-        randomData.append(.init(x: i, y: Int.random(in: 0 ... 10) + i))
+        randomData.append(.init(x: .now.addingTimeInterval(86400.0 * Double(i)), y: Int.random(in: 0 ... 10) + i))
     }
     return randomData
 }
