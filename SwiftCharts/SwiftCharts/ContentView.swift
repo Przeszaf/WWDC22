@@ -3,8 +3,7 @@
 import Charts
 import SwiftUI
 
-struct RandomData: Identifiable {
-    let id = UUID()
+struct RandomData {
     let x: Date
     let y: Int
 }
