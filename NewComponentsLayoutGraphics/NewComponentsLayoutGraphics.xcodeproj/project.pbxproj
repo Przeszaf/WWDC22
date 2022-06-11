@@ -14,6 +14,7 @@
 		45D26F1F285531F6007A08D8 /* TableExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D26F1E285531F6007A08D8 /* TableExample.swift */; };
 		45D26F2128553557007A08D8 /* TableExample2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D26F2028553557007A08D8 /* TableExample2.swift */; };
 		45D26F2428554078007A08D8 /* GridExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D26F2328554078007A08D8 /* GridExample.swift */; };
+		45D26F282855441F007A08D8 /* TransferableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D26F272855441F007A08D8 /* TransferableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		45D26F1E285531F6007A08D8 /* TableExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableExample.swift; sourceTree = "<group>"; };
 		45D26F2028553557007A08D8 /* TableExample2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableExample2.swift; sourceTree = "<group>"; };
 		45D26F2328554078007A08D8 /* GridExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridExample.swift; sourceTree = "<group>"; };
+		45D26F272855441F007A08D8 /* TransferableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +59,6 @@
 		451A5AC828552F4B00AA8AD0 /* NewComponentsLayoutGraphics */ = {
 			isa = PBXGroup;
 			children = (
-				45D26F2228553EE8007A08D8 /* fonts */,
 				451A5AC928552F4B00AA8AD0 /* NewComponentsLayoutGraphicsApp.swift */,
 				451A5ACB28552F4B00AA8AD0 /* ContentView.swift */,
 				451A5ACD28552F4D00AA8AD0 /* Assets.xcassets */,
@@ -65,6 +66,7 @@
 				45D26F1E285531F6007A08D8 /* TableExample.swift */,
 				45D26F2028553557007A08D8 /* TableExample2.swift */,
 				45D26F2328554078007A08D8 /* GridExample.swift */,
+				45D26F272855441F007A08D8 /* TransferableView.swift */,
 			);
 			path = NewComponentsLayoutGraphics;
 			sourceTree = "<group>";
@@ -75,13 +77,6 @@
 				451A5AD028552F4D00AA8AD0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		45D26F2228553EE8007A08D8 /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45D26F2128553557007A08D8 /* TableExample2.swift in Sources */,
+				45D26F282855441F007A08D8 /* TransferableView.swift in Sources */,
 				45D26F1F285531F6007A08D8 /* TableExample.swift in Sources */,
 				451A5ACC28552F4B00AA8AD0 /* ContentView.swift in Sources */,
 				451A5ACA28552F4B00AA8AD0 /* NewComponentsLayoutGraphicsApp.swift in Sources */,

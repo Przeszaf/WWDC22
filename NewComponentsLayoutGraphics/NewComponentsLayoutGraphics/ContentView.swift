@@ -44,6 +44,9 @@ struct ContentTableNav: View {
         NavigationLink("Grid") {
             GridExample()
         }
+        NavigationLink("Transferable - NOT WORKING") {
+            TransferableView()
+        }
     }
 }
 
