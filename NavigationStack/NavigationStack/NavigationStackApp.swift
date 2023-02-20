@@ -10,7 +10,11 @@ import SwiftUI
 @main
 struct NavigationStackApp: App {
     
-    @StateObject var navigation = Navigation()
+    @StateObject var navigation = Navigation.shared
+    
+    init() {
+        Class()
+    }
     
     var body: some Scene {
         WindowGroup {
@@ -20,6 +24,18 @@ struct NavigationStackApp: App {
     }
 }
 
+class Class {
+    init() {
+        Task {
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
+            Navigation.shared.destination.append(.text("123123"))
+        }
+    }
+}
+
 class Navigation: ObservableObject {
+    
+    static let shared = Navigation()
+    
     @Published var destination = [Destination]()
 }

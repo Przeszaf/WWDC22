@@ -11,7 +11,6 @@
 		45E5BEA92854E8E400D98FDD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E5BEA82854E8E400D98FDD /* ContentView.swift */; };
 		45E5BEAB2854E8E600D98FDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45E5BEAA2854E8E600D98FDD /* Assets.xcassets */; };
 		45E5BEAE2854E8E600D98FDD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45E5BEAD2854E8E600D98FDD /* Preview Assets.xcassets */; };
-		45E5BEB62854E91900D98FDD /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 45E5BEB52854E91900D98FDD /* ComposableArchitecture */; };
 		45E5BEB82854EE6F00D98FDD /* ComposableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E5BEB72854EE6F00D98FDD /* ComposableView.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,7 +28,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45E5BEB62854E91900D98FDD /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +87,6 @@
 			);
 			name = NavigationComposable;
 			packageProductDependencies = (
-				45E5BEB52854E91900D98FDD /* ComposableArchitecture */,
 			);
 			productName = NavigationComposable;
 			productReference = 45E5BEA32854E8E400D98FDD /* NavigationComposable.app */;
@@ -362,14 +359,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		45E5BEB52854E91900D98FDD /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 45E5BEB42854E91900D98FDD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 45E5BE9B2854E8E400D98FDD /* Project object */;
 }

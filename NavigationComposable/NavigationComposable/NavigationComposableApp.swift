@@ -8,10 +8,10 @@ struct NavigationComposableApp: App {
 
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-//                .environmentObject(navigation)
-            ComposableView(store: .init(initialState: .live(state: .init()), reducer: composableReducer,
-                                        environment: ComposableEnvironment()))
+            ContentView()
+                .environmentObject(navigation)
+//            ComposableView(store: .init(initialState: .live(state: .init()), reducer: composableReducer,
+//                                        environment: ComposableEnvironment()))
         }
     }
 }

@@ -5,7 +5,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var navigation: Navigation
 
-    enum Routes {
+    enum ContentViewRoutes {
         case child
     }
 
@@ -15,23 +15,36 @@ struct ContentView: View {
                 Text("ContentView")
                     .font(.title)
                 Button("Go to Child") {
-                    navigation.path.append(Routes.child)
+                    navigation.path.append(ContentViewRoutes.child)
+                }
+                Button("Go to Shared") {
+                    navigation.path.append(GeneralRoute.shared("Shared"))
                 }
             }
-            .navigationDestination(for: Routes.self) { route in
+            .navigationDestination(for: ContentViewRoutes.self) { route in
                 switch route {
                 case .child:
                     ChildView()
+                }
+            }
+            .navigationDestination(for: GeneralRoute.self) { route in
+                switch route {
+                case .shared(let text):
+                    ChildTextView(text: text)
                 }
             }
         }
     }
 }
 
+enum GeneralRoute: Hashable {
+    case shared(String)
+}
+
 struct ChildView: View {
     @EnvironmentObject var navigation: Navigation
 
-    enum Routes: Hashable {
+    enum ChildViewRoutes: Hashable {
         case text(String)
     }
     
@@ -40,10 +53,10 @@ struct ChildView: View {
             Text("ChildView")
                 .font(.title)
             Button("Go to Child with text: TextChild1") {
-                navigation.path.append(Routes.text("TextChild1"))
+                navigation.path.append(ChildViewRoutes.text("TextChild1"))
             }
         }
-        .navigationDestination(for: Routes.self) { route in
+        .navigationDestination(for: ChildViewRoutes.self) { route in
             switch route {
             case .text(let string):
                 ChildTextView(text: string)
@@ -79,6 +92,9 @@ struct ChildTextView: View {
                     Text("Go to child with image")
                     Image(systemName: "minus")
                 }
+            }
+            Button("Go to Shared") {
+                navigation.path.append(GeneralRoute.shared("Shared 2"))
             }
         }
         .navigationDestination(for: Routes.self) { route in

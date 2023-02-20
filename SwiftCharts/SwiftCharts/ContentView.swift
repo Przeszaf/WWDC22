@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Chart {
-                ForEach(position ..< position + 50, id: \.self) { i in
+                ForEach(0..<200, id: \.self) { i in
                     LineMark(
                         x: .value("Date", data[i].x),
                         y: .value("Y", data[i].y)
@@ -60,6 +60,7 @@ struct ContentView: View {
                 AxisMarks(values: .automatic(roundUpperBound: false))
             })
             .chartXScale(type: .date)
+            .chartXScale(range: 0+position...50+position)
             .chartYScale(domain: (data + data2).min(by: { $0.y < $1.y })!.y ... (data + data2).max(by: { $0.y < $1.y })!.y)
         }
     }

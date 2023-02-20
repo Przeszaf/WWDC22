@@ -58,5 +58,4 @@ struct TableExample: View {
             tableItems.sort(using: newValue)
         }
     }
-    
 }
